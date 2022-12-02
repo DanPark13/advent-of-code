@@ -22,6 +22,12 @@ tie = {
     "C": "Z"
 }
 
+lose = {
+    "A": "Z",
+    "B": "X",
+    "C": "Y"
+}
+
 for line in data:
     strategy_line = tuple(line.split())
 
@@ -43,22 +49,16 @@ new_chosen = {
     "Z": 6
 }
 
-lose = {
-    "A": "Z",
-    "B": "X",
-    "C": "Y"
-}
-
 for line in data:
     strategy_line = tuple(line.split())
 
     result += new_chosen[strategy_line[1]]
 
-    if strategy_line[1] == "X": # to lose
-        result += chosen[lose[strategy_line[0]]]
+    if strategy_line[1] == "Z": # to win
+        result += chosen[win[strategy_line[0]]]
     elif strategy_line[1] == "Y": # to tie
         result += chosen[tie[strategy_line[0]]]
-    else: # to win
-        result += chosen[win[strategy_line[0]]]
+    else: # to lose
+        result += chosen[lose[strategy_line[0]]]
 
 print(result)
